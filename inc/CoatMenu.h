@@ -1,1 +1,16 @@
-// This class need to support the coat rummage UI, allowing the user to select from collected reagents and mix them together into a finalized item that then goes into the player's hotbar
+#pragma once
+
+#include "CurseVector.hxx"
+#include "Menu.hxx"
+
+class Player;
+
+class CoatMenu : public Menu {
+public:
+	void update(Player& player);
+	void draw(const Player& player) const;
+	void clear();
+	bool open{false};
+	int cursor{0};
+	CurseVector spell;
+};

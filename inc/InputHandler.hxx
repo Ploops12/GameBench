@@ -1,5 +1,7 @@
 #pragma once
 
+#include <raylib.h>
+
 constexpr float DEFAULT_MOVE_SPEED = 1.0f;
 
 class InputHandler {
@@ -9,6 +11,7 @@ public:
 	struct InputState {
 		Vector3 moveInput {};
 		Vector2 lookInput {};
+		bool jumpPressed{false};
 	};
 
 	InputState poll();

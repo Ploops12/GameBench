@@ -1,1 +1,13 @@
-// The base class for scenery, should inherit from Object, should provide means to create both box-based, collidable buildings (with sprites on each side.  Should also be used for non-collidable billboard-style scenery.
+#pragma once
+
+#include "Object.hxx"
+
+class Scenery : public Object {
+public:
+	explicit Scenery(BoundingBox bounds = {});
+	void draw() const override;
+	const BoundingBox& bounds() const { return collisionBounds; }
+
+private:
+	BoundingBox collisionBounds {};
+};
