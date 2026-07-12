@@ -25,11 +25,22 @@ FetchContent_MakeAvailable(raylib)
 add_executable(${PROJECT_NAME})
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/inc)
-file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS src/*.cpp)
+file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS src/*.cpp src/*.cxx)
 target_sources(${PROJECT_NAME} PRIVATE ${SOURCE_FILES})
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 
 target_link_libraries(${PROJECT_NAME} raylib)
+
+# The desktop executable resolves its two selected line-art sheets from a
+# build-local resources directory. Web builds continue to preload resources.
+if (NOT "${PLATFORM}" STREQUAL "Web")
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+            ${CMAKE_CURRENT_SOURCE_DIR}/resources/generated
+            $<TARGET_FILE_DIR:${PROJECT_NAME}>/resources/generated
+        VERBATIM
+    )
+endif()
 
 # Web Configurations
 if ("${PLATFORM}" STREQUAL "Web")

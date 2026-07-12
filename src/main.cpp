@@ -1,45 +1,43 @@
 #include <raylib.h>
-#include "InputHandler.hxx"
+
+#include "Game.h"
 
 #if defined(PLATFORM_WEB)
 	#include <emscripten/emscripten.h>
 #endif
 
-constexpr int screenWidth = 720;
-constexpr int screenHeight = 720;
+namespace {
+constexpr int ScreenWidth = 1280;
+constexpr int ScreenHeight = 720;
 
-InputHandler inputHandler;
+Game* activeGame = nullptr;
 
-void Update() {
-	float dt = GetFrameTime();
-	if (dt > 0.05f) dt = 0.05f;
-	InputHandler::InputState input = inputHandler.poll();
+void runFrame() {
+	activeGame->update();
+	activeGame->draw();
 }
-
-void Draw() {
-	BeginDrawing();
-	EndDrawing();
-}
-
-void Run() {
-	Update();
-	Draw();
 }
 
 int main() {
-	constexpr int FPS_TARGET = 60;
-	InitWindow(screenWidth, screenHeight, "Cauldron");
+	constexpr int FramesPerSecond = 60;
+	SetConfigFlags(FLAG_MSAA_4X_HINT);
+	InitWindow(ScreenWidth, ScreenHeight, "Salem: Satchel of Thorns");
+	if (!IsWindowReady()) {
+		return 1;
+	}
 
 	{
+		Game game;
+		activeGame = &game;
 #if defined(PLATFORM_WEB)
-		emscripten_set_main_loop_arg(Run, FPS_TARGET, 1);
+		emscripten_set_main_loop(runFrame, FramesPerSecond, 1);
 #else
-		SetTargetFPS(FPS_TARGET);
-
+		SetTargetFPS(FramesPerSecond);
 		while (!WindowShouldClose()) {
-			Run();
+			runFrame();
 		}
 #endif
+		activeGame = nullptr;
 	}
 
 	CloseWindow();

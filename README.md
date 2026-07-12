@@ -1,1 +1,1 @@
-This is the main starting branch that was used in the initial one-shot for each model.  The file IMPLEMENTATION_PROMPT.txt contains the prompt that was used initially, then FOLLOWUP_PROMPT.txt contains the prompt used at the end.  Note: the followup prompt should only be used with a harness that supports setting goals with a /goal syntax.
+Unfinished
