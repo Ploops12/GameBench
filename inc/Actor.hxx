@@ -1,1 +1,10 @@
-// This should be a class that derives from Object, adding movement and interaction to the Object base
+#pragma once
+
+#include <raylib.h>
+
+class Actor {
+public:
+	virtual ~Actor() = default;
+	Vector3 position{};
+	float radius{0.45f};
+};

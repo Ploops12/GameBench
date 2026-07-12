@@ -5,7 +5,7 @@ InputHandler::InputHandler(int exitKey) {
 	SetExitKey(exitKey);
 }
 
-InputState InputHandler::poll() {
+InputHandler::InputState InputHandler::poll() {
 	InputState is;
 
 	MovementKeys& mk = movementKeys;
@@ -17,15 +17,16 @@ InputState InputHandler::poll() {
 	if (IsKeyDown(mk.moveDown)) is.moveInput.z -= 1.0f;
 
 	if (IsKeyPressed(mouseToggleKey)) {
-		mouseCaptured = !mouseCaptured;
+		mouseCaptured_ = !mouseCaptured_;
 
-		if (mouseCaptured) {
+		if (mouseCaptured_) {
 			DisableCursor();
 			is.lookInput = GetMouseDelta();
 		} else {
 			EnableCursor();
 		}
 	}
+	if (mouseCaptured_) is.lookInput = GetMouseDelta();
 
 	return is;
 }
