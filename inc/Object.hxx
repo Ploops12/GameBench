@@ -3,8 +3,32 @@
 #include <raylib.h>
 
 class Object {
-// This should be a base class for all game objects
-// Should include an overridable drawing function with a main function that uses a drawing toggle
-// Should have collision detection and resolution functions with collision toggle
-// Should store and make available relevant info such as position
+public:
+	Object();
+	Object(Vector3 startPosition, float radius, bool isCollidable);
+	virtual ~Object() = default;
+
+	virtual void update(float dt);
+	virtual void draw3D(const Camera3D& camera) const;
+	virtual void draw2D() const;
+
+	Vector3 getPosition() const;
+	void setPosition(Vector3 newPosition);
+
+	float getCollisionRadius() const;
+	void setCollisionRadius(float radius);
+
+	bool isActive() const;
+	void setActive(bool value);
+
+	bool isCollidable() const;
+	void setCollidable(bool value);
+
+	virtual BoundingBox getBoundingBox() const;
+
+protected:
+	Vector3 position;
+	float collisionRadius;
+	bool active;
+	bool collidable;
 };

@@ -1,24 +1,23 @@
 #include <raylib.h>
-#include "InputHandler.hxx"
+#include <string>
+#include <memory>
+#include "Game.h"
 
 #if defined(PLATFORM_WEB)
 	#include <emscripten/emscripten.h>
 #endif
 
-constexpr int screenWidth = 720;
+constexpr int screenWidth = 1280;
 constexpr int screenHeight = 720;
 
-InputHandler inputHandler;
+std::unique_ptr<Game> game;
 
 void Update() {
-	float dt = GetFrameTime();
-	if (dt > 0.05f) dt = 0.05f;
-	InputHandler::InputState input = inputHandler.poll();
+	game->update();
 }
 
 void Draw() {
-	BeginDrawing();
-	EndDrawing();
+	game->draw();
 }
 
 void Run() {
@@ -26,9 +25,22 @@ void Run() {
 	Draw();
 }
 
-int main() {
+int main(int argc, char** argv) {
+	if (argc > 1 && std::string(argv[1]) == "--logic-smoke") {
+		Game smokeGame;
+		std::string report;
+		bool ok = smokeGame.runLogicSmoke(report);
+		TraceLog(LOG_INFO, "%s", report.c_str());
+		return ok ? 0 : 2;
+	}
+
 	constexpr int FPS_TARGET = 60;
-	InitWindow(screenWidth, screenHeight, "Cauldron");
+	SetConfigFlags(FLAG_MSAA_4X_HINT);
+	InitWindow(screenWidth, screenHeight, "Salem Hexshooter");
+	if (!IsWindowReady()) {
+		return 1;
+	}
+	game = std::make_unique<Game>();
 
 	{
 #if defined(PLATFORM_WEB)

@@ -1,1 +1,12 @@
-// This class should support the Main Menu handling, mostly just the play game button and some graphics for now
+#pragma once
+
+#include "Menu.hxx"
+
+class MainMenu : public Menu {
+public:
+	void setCanStart(bool value);
+	bool canStart() const;
+
+private:
+	bool startEnabled{true};
+};
