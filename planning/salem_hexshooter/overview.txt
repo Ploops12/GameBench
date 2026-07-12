@@ -1,0 +1,74 @@
+SALEM HEXSHOOTER
+
+Core pitch
+You are a witch fighting your way out of Salem in a fast, brutal boomer-shooter. Each run pushes through a chain of cursed districts, torchlit roads, farms, church yards, and fortified streets full of witch-hunters. Angry villagers become trained militias, sanctified executioners, alchemical suppressors, and anti-witch constructs built specifically to kill your kind.
+
+This is not a gun game with spell skins. The player never finds weapons. The whole combat kit comes from hexes, curses, omens, blights, familiars, and ritual spellforms built from harvested reagents.
+
+Run structure
+1. Enter a Salem district and clear an aggressive combat space.
+2. Collect reagents from bodies, shrines, cursed flora, reliquaries, and witch-hunter gear.
+3. Return to the witch camp, built around a creaking carriage and a central cauldron.
+4. Experiment with reagents, discover interactions, author or mutate spells, and prepare a loadout.
+5. Push into the next district with stronger enemies and stranger anti-witch defenses.
+
+Design priority
+The signature feature is the rest-time brewing system at camp. The camp is not just a menu stop. It is the heart of the game.
+
+The player should be able to:
+- test unstable reagent combinations
+- discover emergent spell behavior
+- tune spell logic or side effects
+- decide how much risk, backlash, and weirdness to tolerate
+- build a custom combat kit that feels authored by a dangerous witch
+
+The camp should feel like a temporary occult laboratory:
+- cauldron in the middle
+- folding worktables and iron tools
+- jars, bones, salts, herbs, wax, ash, moths, and organs on display
+- dangling charms and notes pinned to the carriage wall
+- a visible sense that the player is living on the road while being hunted
+
+Common combat rules
+- Combat is first-person and fast.
+- Mid-combat brewing is real-time and stressful.
+- Mid-combat brewing never uses both queued brew and coat rummage in the same variant.
+- Every spell, even direct damage tools, must still feel like a curse or witch effect.
+- The player can be slowed, exposed, or partially committed while brewing, but still needs enough control for a high-mobility FPS.
+
+Common enemy ladder
+- Torch mobs: farmers, zealots, panicked villagers
+- Hardliners: musketeers, dog handlers, trappers, executioners
+- Purifiers: censer bearers, salt grenadiers, reliquary snipers, hymn chanters
+- Specialists: alchemical witch-breakers, oathbound hunter captains, ward engineers
+- Constructs: iron saints, wicker penitents, bell-driven watchers, anti-curse frames
+
+Shared reagent fantasy
+Reagents should sound tactile, occult, and a little disgusting:
+- grave salt
+- saint ash
+- black wax
+- widow nettle
+- bell bronze filings
+- moth dust
+- bog marrow
+- plague honey
+- funeral oil
+- church glass splinters
+- thorn hearts
+- execution smoke
+- raven tongues
+- drowned pearl slurry
+
+Variants in this folder
+The four variant folders all describe the same game, but each changes:
+- the spell-building mechanism at camp
+- the style of emergent interactions
+- the mid-combat brewing method
+- the UI philosophy for combat and camp
+
+Variant summary
+1. Grimoire of Embers: structured symbolic spellcraft, queued brew
+2. Satchel of Thorns: tactile hedge-witch alchemy, coat rummage
+3. Cauldron of Echoes: layered ritual engineering, queued brew
+4. Witchwork Engine: dense node-based witch programming, coat rummage

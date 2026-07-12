@@ -1,0 +1,1 @@
+// This class should handle over-arching things, such as maintaining lists of all objects, etc and updating them and drawing them.  Additionally, it should manage overarching state info, like passing menu input into the game state so other objects can respond to the changes

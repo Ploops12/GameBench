@@ -1,0 +1,56 @@
+SATCHEL OF THORNS
+
+Variant pitch
+This version treats the witch as a feral hedge alchemist. Camp experimentation is messy, physical, and biological. Spells are assembled from living or semi-living ingredients and feel like cruel little organisms unleashed at enemies.
+
+Combat fantasy
+The player feels like a roadside hag weaponizing nests, thorns, larvae, fumes, and curse-pods. Combat is more improvised than the grimoire variant, and the spells often feel like they are hatching, latching, or spreading rather than simply firing.
+
+Rest-time brewing focus
+The camp phase revolves around physically staging ingredient reactions around the cauldron:
+- a worktable for laying carriers and organs around a brew circle
+- hanging satchels, stitched pockets, and specimen trays
+- reaction bowls for watching how instincts and mutations alter a spell
+- a stable recipe rack for preserved concoctions
+- a hazard display showing if a mixture is likely to burst, recur, infest, or turn on the caster
+
+Spell-building mechanism: Reagent Anatomy
+Every spell is built from four biological roles:
+- Carrier: thorn pod, moth cloud, bile flask, bone needle cluster, briar seed, skull mote
+- Core Reagent: plague honey, bog marrow, saint ash, black milk, widow nettle, execution smoke
+- Instinct: hunt, cling, burst, nest, leech, scatter, stalk
+- Mutation: molts, sprouts, screams, divides, remembers, ferments
+
+Emergent behavior comes from bodily logic:
+- a moth cloud with hunt + screams becomes a panic swarm that spirals toward motion
+- a thorn pod with cling + sprouts becomes a snaring bloom that grows off targets and walls
+- a bile flask with burst + ferments creates delayed toxic eruptions after impact
+- a briar seed with remembers can regrow at the place a victim died
+
+The discovery loop is about observing behavior, not just reading tooltips. The player should feel like they are breeding harmful little miracles.
+
+Combat brewing model: coat rummage
+This variant never uses queued recipe pages. Combat brewing happens through a real-time satchel and coat interface:
+- hold brew to open fast-access pockets and loops on the coat interior
+- movement slows but continues
+- sprinting and some vertical mobility are disabled
+- carried ingredients are chosen by muscle memory from stitched physical slots
+- the result is assembled quickly and thrown or cast
+
+This creates a highly tactile, stressful improvisation layer.
+
+Example spells
+- Thorn Litter: seed burst that carpets the floor with ankle-binding growth
+- Mourning Moths: shrieking swarm that induces panic and blocks sight
+- Leech Flask: splatter curse that feeds on hurt enemies and returns ward
+- Widow Husk: clinging pod that bursts into nettles when its host dies
+- Rotten Memory: recurring bile mark that reopens where blood was spilled
+
+Strengths
+- Very witchy and weird
+- Strong visual identity for both camp and combat
+- Makes reagent collection feel exciting because each part changes behavior
+
+Risks
+- Must keep the coat interface readable under pressure
+- Emergent creature-like logic needs concise feedback in camp testing

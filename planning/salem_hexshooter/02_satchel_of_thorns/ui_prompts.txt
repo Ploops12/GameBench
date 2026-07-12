@@ -1,0 +1,28 @@
+SATCHEL OF THORNS UI PROMPTS
+
+combat_ui_01
+First-person witch boomer-shooter HUD in muddy Salem farmland at night, minimal hedge-witch interface, stitched leather borders, hanging bone charms, health and ward shown as stitched charms and thorn rings, active organic curse slots, no guns, tactile readable UI mockup
+
+combat_ui_02
+Dense feral witch combat UI concept, first-person view with moth swarm spell active, satchel icons, reagent vials, infestation meter, blooded reticle made of briars, richly textured coat and leather HUD elements, readable under action
+
+combat_ui_03
+Aggressive stylized FPS witch HUD, thorny overlays and screaming seed glyphs, strong motion clarity, swampy village lane combat, visible coat rummage readiness, active curse-organ loadout, polished game interface concept
+
+brew_ui_01
+Real-time coat rummage spell brewing UI in first-person, witch opens stitched satchel pockets while still moving, slowed movement, enemies approaching, physical reagent slots with moth jars thorn pods bile flasks saint ash packets, tactile stressful game UI mockup
+
+brew_ui_02
+In-combat witch coat interior interface, no pause, reduced speed movement, hands grabbing ingredients from loops and pockets, feral alchemy layout with dangling bones and sewn labels, Salem hunters rushing the player, polished UI concept
+
+brew_ui_03
+Fast-access satchel brewing HUD for a hedge-witch shooter, first-person movement continues, physical reagent selection arranged on coat lining, clear vulnerability and no sprint warning, grotesque but readable UI mockup
+
+camp_ui_01
+Witch carriage camp UI with central bubbling cauldron, specimen table covered in thorn pods moth jars marrow bowls and black milk, deep spell anatomy editor showing Carrier Core Reagent Instinct Mutation, eerie field-lab atmosphere, detailed game UI mockup
+
+camp_ui_02
+Rest-time hedge-witch laboratory inside and around a spooky carriage, big center cauldron, hanging satchels and stitched notes, physical ingredient arrangement interface, emergent behavior preview for sprout scream divide and remember mutations, polished UI concept
+
+camp_ui_03
+Dark roadside witch camp spell workshop, cauldron centerpiece, messy organic alchemy tools, trays of bones and herbs, modular biological spellbuilding screen with reaction bowls and hazard warnings, richly detailed occult UI

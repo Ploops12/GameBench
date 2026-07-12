@@ -1,0 +1,1 @@
+// The base class for scenery, should inherit from Object, should provide means to create both box-based, collidable buildings (with sprites on each side.  Should also be used for non-collidable billboard-style scenery.

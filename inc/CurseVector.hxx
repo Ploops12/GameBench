@@ -1,0 +1,1 @@
+// This should be the base class for base vectors that reagents are added into.  It should support up to three reagents being combined into it, with effects being determined by the combination.  It should support all things needed for the usable item, including in-world sprite, in-hand sprite, and effects.
