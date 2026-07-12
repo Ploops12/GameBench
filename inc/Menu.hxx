@@ -1,1 +1,12 @@
-// This should be the base class that all UI objects inherit from, including the main menu, coat rummage UI, any UI element
+#pragma once
+
+class Menu {
+public:
+	virtual ~Menu() = default;
+	virtual void draw() const = 0;
+	[[nodiscard]] bool isActive() const;
+	void setActive(bool active);
+
+protected:
+	bool active_ {false};
+};

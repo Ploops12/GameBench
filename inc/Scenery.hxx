@@ -1,1 +1,27 @@
-// The base class for scenery, should inherit from Object, should provide means to create both box-based, collidable buildings (with sprites on each side.  Should also be used for non-collidable billboard-style scenery.
+#pragma once
+
+#include "Object.hxx"
+
+enum class SceneryStyle {
+	Building,
+	Crate,
+	Fence,
+	Gallows,
+	Grave,
+	Tree
+};
+
+class Scenery : public Object {
+public:
+	Scenery(BoundingBox bounds, SceneryStyle style, bool collidable = true);
+
+	[[nodiscard]] BoundingBox bounds() const override;
+	[[nodiscard]] SceneryStyle style() const;
+
+protected:
+	void onDraw(const Camera3D& camera) const override;
+
+private:
+	BoundingBox bounds_ {};
+	SceneryStyle style_ {SceneryStyle::Crate};
+};
