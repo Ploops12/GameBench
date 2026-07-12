@@ -25,9 +25,14 @@ FetchContent_MakeAvailable(raylib)
 add_executable(${PROJECT_NAME})
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/inc)
-file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS src/*.cpp)
+file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS src/*.cpp src/*.cxx)
 target_sources(${PROJECT_NAME} PRIVATE ${SOURCE_FILES})
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
+if (MSVC)
+    target_compile_options(${PROJECT_NAME} PRIVATE /W4)
+else()
+    target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Wpedantic)
+endif()
 
 target_link_libraries(${PROJECT_NAME} raylib)
 
