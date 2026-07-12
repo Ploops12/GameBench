@@ -1,1 +1,10 @@
-// This class should support the Main Menu handling, mostly just the play game button and some graphics for now
+#pragma once
+
+#include "Menu.hxx"
+#include "InputHandler.hxx"
+
+class MainMenu : public Menu {
+public:
+	bool update(const InputHandler::InputState& input);
+	void draw(int screenWidth, int screenHeight) const;
+};

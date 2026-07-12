@@ -1,1 +1,8 @@
-// This class should be the main player HUD, with health indicators, support for the warding shield animation, hotbar, etc
+#pragma once
+
+class Player;
+
+class HUD {
+public:
+	void draw(const Player& player, int screenWidth, int screenHeight, int wave, int enemiesAlive, bool cleared) const;
+};

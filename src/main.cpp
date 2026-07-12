@@ -1,24 +1,21 @@
 #include <raylib.h>
-#include "InputHandler.hxx"
+#include "Game.h"
 
 #if defined(PLATFORM_WEB)
 	#include <emscripten/emscripten.h>
 #endif
 
-constexpr int screenWidth = 720;
+constexpr int screenWidth = 1280;
 constexpr int screenHeight = 720;
 
-InputHandler inputHandler;
+Game* game = nullptr;
 
 void Update() {
-	float dt = GetFrameTime();
-	if (dt > 0.05f) dt = 0.05f;
-	InputHandler::InputState input = inputHandler.poll();
+	game->update();
 }
 
 void Draw() {
-	BeginDrawing();
-	EndDrawing();
+	game->draw();
 }
 
 void Run() {
@@ -28,11 +25,16 @@ void Run() {
 
 int main() {
 	constexpr int FPS_TARGET = 60;
-	InitWindow(screenWidth, screenHeight, "Cauldron");
+	SetConfigFlags(FLAG_MSAA_4X_HINT);
+	InitWindow(screenWidth, screenHeight, "Cauldron - Salem Hexshooter");
+	if (!IsWindowReady()) {
+		return 1;
+	}
+	game = new Game(screenWidth, screenHeight);
 
 	{
 #if defined(PLATFORM_WEB)
-		emscripten_set_main_loop_arg(Run, FPS_TARGET, 1);
+		emscripten_set_main_loop(Run, FPS_TARGET, 1);
 #else
 		SetTargetFPS(FPS_TARGET);
 
@@ -42,6 +44,7 @@ int main() {
 #endif
 	}
 
+	delete game;
 	CloseWindow();
 	return 0;
 }

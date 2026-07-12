@@ -1,1 +1,12 @@
-// This class need to support the coat rummage UI, allowing the user to select from collected reagents and mix them together into a finalized item that then goes into the player's hotbar
+#pragma once
+
+#include "Menu.hxx"
+#include "InputHandler.hxx"
+
+class Player;
+
+class CoatMenu : public Menu {
+public:
+	void update(Player& player, const InputHandler::InputState& input);
+	void draw(const Player& player, int screenWidth, int screenHeight) const;
+};
