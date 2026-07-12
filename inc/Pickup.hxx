@@ -1,1 +1,17 @@
-// Should inherit from Object and provide means to create floating pickup items (reagents) for the player to walk over and grab
+#pragma once
+
+#include "Object.hxx"
+#include "Reagent.hxx"
+
+class Pickup : public Object {
+public:
+	Pickup(Vector3 position, ReagentType type);
+
+	void update(float time);
+	void draw3D() const override;
+	ReagentType getType() const;
+
+private:
+	ReagentType type;
+	float bobOffset {};
+};

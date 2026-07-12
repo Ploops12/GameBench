@@ -1,34 +1,29 @@
 #include <raylib.h>
-#include "InputHandler.hxx"
+#include "Game.h"
 
 #if defined(PLATFORM_WEB)
 	#include <emscripten/emscripten.h>
 #endif
 
-constexpr int screenWidth = 720;
+constexpr int screenWidth = 1280;
 constexpr int screenHeight = 720;
 
-InputHandler inputHandler;
-
-void Update() {
-	float dt = GetFrameTime();
-	if (dt > 0.05f) dt = 0.05f;
-	InputHandler::InputState input = inputHandler.poll();
-}
-
-void Draw() {
-	BeginDrawing();
-	EndDrawing();
-}
+Game* game = nullptr;
 
 void Run() {
-	Update();
-	Draw();
+	float deltaTime = GetFrameTime();
+	if (deltaTime > 0.05f) deltaTime = 0.05f;
+	game->update(deltaTime);
+	game->draw();
 }
 
 int main() {
 	constexpr int FPS_TARGET = 60;
-	InitWindow(screenWidth, screenHeight, "Cauldron");
+	InitWindow(screenWidth, screenHeight, "Salem Hexshooter // Coat of Thorns");
+	if (!IsWindowReady()) return 1;
+	SetWindowMinSize(960, 540);
+	Game runtime;
+	game = &runtime;
 
 	{
 #if defined(PLATFORM_WEB)
