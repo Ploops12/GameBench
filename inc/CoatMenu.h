@@ -1,1 +1,16 @@
-// This class need to support the coat rummage UI, allowing the user to select from collected reagents and mix them together into a finalized item that then goes into the player's hotbar
+#pragma once
+
+#include "Menu.hxx"
+
+class Player;
+
+class CoatMenu : public Menu {
+public:
+	void update(Player& player);
+	void draw(const Player& player) const;
+	bool isOpen() const { return isActive(); }
+	void setOpen(bool value) { setActive(value); }
+
+private:
+	float pulse {};
+};

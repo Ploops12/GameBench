@@ -1,23 +1,27 @@
 #include <raylib.h>
-#include "InputHandler.hxx"
+#include <memory>
+#include <string>
+#include "Game.h"
+#include "SelfTest.hxx"
 
 #if defined(PLATFORM_WEB)
 	#include <emscripten/emscripten.h>
 #endif
 
-constexpr int screenWidth = 720;
+constexpr int screenWidth = 1280;
 constexpr int screenHeight = 720;
 
-InputHandler inputHandler;
+std::unique_ptr<Game> game;
 
 void Update() {
 	float dt = GetFrameTime();
 	if (dt > 0.05f) dt = 0.05f;
-	InputHandler::InputState input = inputHandler.poll();
+	game->update(dt);
 }
 
 void Draw() {
 	BeginDrawing();
+	game->draw();
 	EndDrawing();
 }
 
@@ -26,9 +30,12 @@ void Run() {
 	Draw();
 }
 
-int main() {
+int main(int argc, char** argv) {
+	if (argc > 1 && std::string(argv[1]) == "--self-test") return runSelfTests() ? 0 : 1;
 	constexpr int FPS_TARGET = 60;
 	InitWindow(screenWidth, screenHeight, "Cauldron");
+	SetWindowTitle("SATCHEL OF THORNS // SALEM COMBAT SLICE");
+	game = std::make_unique<Game>();
 
 	{
 #if defined(PLATFORM_WEB)
