@@ -22,14 +22,37 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(raylib)
 
 # Our Project
-add_executable(${PROJECT_NAME})
+file(GLOB_RECURSE CORE_SOURCE_FILES CONFIGURE_DEPENDS src/*.cpp src/*.cxx)
+list(FILTER CORE_SOURCE_FILES EXCLUDE REGEX "/main\\.cpp$")
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/inc)
-file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS src/*.cpp)
-target_sources(${PROJECT_NAME} PRIVATE ${SOURCE_FILES})
-target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
+add_library(cauldron_core STATIC ${CORE_SOURCE_FILES})
+target_include_directories(cauldron_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/inc)
+if (raylib_SOURCE_DIR)
+    target_include_directories(cauldron_core SYSTEM PUBLIC ${raylib_SOURCE_DIR}/src)
+endif()
+target_compile_features(cauldron_core PUBLIC cxx_std_17)
+target_link_libraries(cauldron_core PUBLIC raylib)
 
-target_link_libraries(${PROJECT_NAME} raylib)
+if (MSVC)
+    target_compile_options(cauldron_core PRIVATE /W4 /permissive-)
+else()
+    target_compile_options(cauldron_core PRIVATE -Wall -Wextra -Wpedantic)
+endif()
+
+add_executable(${PROJECT_NAME} src/main.cpp)
+target_link_libraries(${PROJECT_NAME} PRIVATE cauldron_core)
+
+include(CTest)
+if (BUILD_TESTING)
+    add_executable(cauldron_tests tests/CombatTests.cpp)
+    target_link_libraries(cauldron_tests PRIVATE cauldron_core)
+    if (MSVC)
+        target_compile_options(cauldron_tests PRIVATE /W4 /permissive-)
+    else()
+        target_compile_options(cauldron_tests PRIVATE -Wall -Wextra -Wpedantic)
+    endif()
+    add_test(NAME cauldron_combat_systems COMMAND cauldron_tests)
+endif()
 
 # Web Configurations
 if ("${PLATFORM}" STREQUAL "Web")
