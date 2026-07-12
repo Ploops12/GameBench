@@ -1,1 +1,12 @@
-// This should be a class that derives from Object, adding movement and interaction to the Object base
+#pragma once
+
+#include "Object.hxx"
+
+class Actor : public Object {
+public:
+	Vector3 GetVelocity() const { return velocity; }
+	void SetVelocity(Vector3 value) { velocity = value; }
+
+protected:
+	Vector3 velocity{};
+};

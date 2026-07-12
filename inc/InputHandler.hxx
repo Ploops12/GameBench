@@ -1,14 +1,25 @@
 #pragma once
 
+#include <raylib.h>
+
 constexpr float DEFAULT_MOVE_SPEED = 1.0f;
 
 class InputHandler {
 public:
 	explicit InputHandler(int exitKey = KEY_NULL);
+	void SetMouseCaptured(bool captured);
+	bool IsMouseCaptured() const { return mouseCaptured; }
 
 	struct InputState {
 		Vector3 moveInput {};
 		Vector2 lookInput {};
+		bool jumpPressed{false};
+		bool sprintHeld{false};
+		bool castPressed{false};
+		bool wardPressed{false};
+		bool coatPressed{false};
+		bool coatHeld{false};
+		bool escapePressed{false};
 	};
 
 	InputState poll();

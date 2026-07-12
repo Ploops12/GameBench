@@ -1,47 +1,43 @@
 #include <raylib.h>
-#include "InputHandler.hxx"
+
+#include "Game.h"
 
 #if defined(PLATFORM_WEB)
 	#include <emscripten/emscripten.h>
 #endif
 
-constexpr int screenWidth = 720;
-constexpr int screenHeight = 720;
+namespace {
+	Game* game = nullptr;
 
-InputHandler inputHandler;
-
-void Update() {
-	float dt = GetFrameTime();
-	if (dt > 0.05f) dt = 0.05f;
-	InputHandler::InputState input = inputHandler.poll();
-}
-
-void Draw() {
-	BeginDrawing();
-	EndDrawing();
-}
-
-void Run() {
-	Update();
-	Draw();
+	void Run() {
+		float dt = GetFrameTime();
+		if (dt > 0.05f) dt = 0.05f;
+		game->Update(dt);
+		game->Draw();
+	}
 }
 
 int main() {
-	constexpr int FPS_TARGET = 60;
-	InitWindow(screenWidth, screenHeight, "Cauldron");
+	constexpr int screenWidth = 1280;
+	constexpr int screenHeight = 720;
+	SetConfigFlags(FLAG_MSAA_4X_HINT);
+	InitWindow(screenWidth, screenHeight, "Salem Hexshooter // Cauldron");
+	if (!IsWindowReady()) return 1;
+	SetTargetFPS(60);
+	DisableCursor();
 
 	{
+		Game runningGame;
+		game = &runningGame;
 #if defined(PLATFORM_WEB)
-		emscripten_set_main_loop_arg(Run, FPS_TARGET, 1);
+		emscripten_set_main_loop(Run, 60, 1);
 #else
-		SetTargetFPS(FPS_TARGET);
-
-		while (!WindowShouldClose()) {
-			Run();
-		}
+		while (!runningGame.ShouldExit()) Run();
 #endif
+		game = nullptr;
 	}
 
+	EnableCursor();
 	CloseWindow();
 	return 0;
 }
