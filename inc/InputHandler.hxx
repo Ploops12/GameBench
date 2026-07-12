@@ -1,5 +1,7 @@
 #pragma once
 
+#include <raylib.h>
+
 constexpr float DEFAULT_MOVE_SPEED = 1.0f;
 
 class InputHandler {
@@ -7,11 +9,13 @@ public:
 	explicit InputHandler(int exitKey = KEY_NULL);
 
 	struct InputState {
-		Vector3 moveInput {};
-		Vector2 lookInput {};
+		Vector3 moveInput{};
+		Vector2 lookInput{};
 	};
 
 	InputState poll();
+	bool isMouseCaptured() const { return mouseCaptured; }
+
 private:
 	struct MovementKeys {
 		int moveForward{KEY_W};

@@ -1,10 +1,20 @@
 #pragma once
 
 #include <raylib.h>
+#include <raymath.h>
 
 class Object {
-// This should be a base class for all game objects
-// Should include an overridable drawing function with a main function that uses a drawing toggle
-// Should have collision detection and resolution functions with collision toggle
-// Should store and make available relevant info such as position
+public:
+	virtual ~Object() = default;
+	virtual void update(float) {}
+	virtual void draw() const {}
+
+	Vector3 getPosition() const { return position; }
+	void setPosition(Vector3 value) { position = value; }
+	bool isActive() const { return active; }
+
+protected:
+	Vector3 position{};
+	Vector3 halfSize{0.5f, 0.5f, 0.5f};
+	bool active{true};
 };

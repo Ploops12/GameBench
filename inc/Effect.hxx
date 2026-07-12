@@ -1,1 +1,19 @@
-// This should be the base class for in-world effects, such as explosions and sigils.  It should take into account determining those caught in the radius, as well as providing something to apply the effect
+#pragma once
+
+#include <raylib.h>
+#include <raymath.h>
+#include "CurseVector.hxx"
+
+enum class EffectKind { Bolt, Mine, Burst };
+
+struct CurseEffect {
+	EffectKind kind{EffectKind::Bolt};
+	Vector3 position{};
+	Vector3 velocity{};
+	SpellStats stats{};
+	float life{2.0f};
+	bool active{true};
+
+	void update(float dt) { position = Vector3Add(position, Vector3Scale(velocity, dt)); life -= dt; active = active && life > 0.0f; }
+	void draw() const;
+};

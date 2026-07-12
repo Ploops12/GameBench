@@ -1,5 +1,5 @@
 #include <raylib.h>
-#include "InputHandler.hxx"
+#include "Game.h"
 
 #if defined(PLATFORM_WEB)
 	#include <emscripten/emscripten.h>
@@ -8,16 +8,17 @@
 constexpr int screenWidth = 720;
 constexpr int screenHeight = 720;
 
-InputHandler inputHandler;
+Game game;
 
 void Update() {
 	float dt = GetFrameTime();
 	if (dt > 0.05f) dt = 0.05f;
-	InputHandler::InputState input = inputHandler.poll();
+	game.update(dt);
 }
 
 void Draw() {
 	BeginDrawing();
+	game.draw();
 	EndDrawing();
 }
 
@@ -29,6 +30,8 @@ void Run() {
 int main() {
 	constexpr int FPS_TARGET = 60;
 	InitWindow(screenWidth, screenHeight, "Cauldron");
+	if (!IsWindowReady()) return 1;
+	DisableCursor();
 
 	{
 #if defined(PLATFORM_WEB)
