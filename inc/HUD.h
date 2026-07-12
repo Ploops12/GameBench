@@ -1,1 +1,9 @@
-// This class should be the main player HUD, with health indicators, support for the warding shield animation, hotbar, etc
+#pragma once
+
+#include "Player.hxx"
+#include <raylib.h>
+
+class HUD {
+public:
+	void draw(const Player& player, int enemyCount, int screenWidth, int screenHeight) const;
+};

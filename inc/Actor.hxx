@@ -1,1 +1,11 @@
-// This should be a class that derives from Object, adding movement and interaction to the Object base
+#pragma once
+
+#include "Object.hxx"
+#include <raylib.h>
+
+class Actor : public Object {
+public:
+	Vector3 velocity{};
+	float moveSpeed{1.0f};
+	bool alive{true};
+};

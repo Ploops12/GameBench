@@ -1,1 +1,11 @@
-// Should inherit from Object and provide means to create floating pickup items (reagents) for the player to walk over and grab
+#pragma once
+
+#include "Reagent.hxx"
+#include <raylib.h>
+
+struct Pickup {
+	ReagentType type{ReagentType::GraveSalt};
+	Vector3 position{};
+	float bobSeed{0.0f};
+	bool active{true};
+};

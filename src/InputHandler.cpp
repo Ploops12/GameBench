@@ -2,6 +2,7 @@
 
 InputHandler::InputHandler(int exitKey) {
 	SetExitKey(exitKey);
+	DisableCursor();
 }
 
 InputHandler::InputState InputHandler::poll() {

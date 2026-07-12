@@ -1,1 +1,14 @@
-// This class need to support the coat rummage UI, allowing the user to select from collected reagents and mix them together into a finalized item that then goes into the player's hotbar
+#pragma once
+
+#include "CurseVector.hxx"
+#include "Player.hxx"
+#include <raylib.h>
+
+class CoatMenu {
+public:
+	bool open{false};
+	int highlightedReagent{0};
+
+	void update(Player& player);
+	void draw(const Player& player, int screenWidth, int screenHeight) const;
+};
